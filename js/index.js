@@ -7,4 +7,9 @@ $(document).ready(function(){
        dotColor: '#b0d6f0',
        lineColor: '#004471'
    }); 
+   
+   $('#t_us').timepicker();
+   $('#t_ut').timepicker();
+   $('#t_rs').timepicker();
+   $('#t_rt').timepicker();
 })

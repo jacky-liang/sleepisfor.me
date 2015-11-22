@@ -18,6 +18,10 @@
     background: #002640;
 }
 
+.container-content {
+    color: white;
+}
+
 .container-left {
     padding-left: 40px;
 }
@@ -26,9 +30,18 @@
     padding-right: 40px;
 }
 
+.container-time {
+    padding: 15px;
+}
+
+.container-time input {
+    margin-top: 5px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
 .inputs {
-    height: 400px;
     background: rgba(0, 0, 0, 0.6);
+    padding-bottom: 50px;
 }
 
 .outputs {
