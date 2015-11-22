@@ -1,9 +1,12 @@
+body {
+    color: white;
+}
+
 .container-title {
     height: 50px;
     width: 100%;
     padding: 13px;
     background: rgba(0, 0, 0, 0.6);
-    color: white;
     font-size: large;
     margin-bottom: 20px;
 }
@@ -23,15 +26,15 @@
 }
 
 .container-left {
-    padding-left: 40px;
+    padding-left: 20px;
 }
 
 .container-right {
-    padding-right: 40px;
+    padding-right: 20px;
 }
 
 .container-time {
-    padding: 15px;
+    margin-bottom: 15px;
 }
 
 .container-time input {
@@ -39,9 +42,13 @@
     background: rgba(255, 255, 255, 0.9);
 }
 
+.container-submit-button {
+    text-align: right;
+}
+
 .inputs {
     background: rgba(0, 0, 0, 0.6);
-    padding-bottom: 50px;
+    padding: 15px;
 }
 
 .outputs {

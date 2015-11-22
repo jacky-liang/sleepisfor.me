@@ -6,6 +6,8 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.particleground.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
@@ -19,12 +21,35 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-5 col-md-3 container-left">
-        <div class="inputs">
+    <div class="col-xs-5 col-md-3">
+        <div class="container-left">
+            <div class="inputs">
+                <div class="container-time">
+                    <span>When do you usually goto sleep?</span>
+                    <input id="t_us" type="text" class="form-control input-small">
+                </div>
+                <div class="container-time">
+                    <span>When do you usually wake up?</span>
+                    <input id="t_ut" type="text" class="form-control input-small">
+                </div>
+                <div class="container-time">
+                    <span>When did you goto sleep yesterday?</span>
+                    <input id="t_rs" type="text" class="form-control input-small">
+                </div>
+                <div class="container-time">
+                    <span>When did you wake up today?</span>
+                    <input id="t_rt" type="text" class="form-control input-small">
+                </div>
+                <div class="container-submit-button">
+                    <button type="button" class="btn btn-primary" id="submit">Submit</button>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-xs-7 col-md-9 container-right">
-        <div class="outputs">
+    <div class="col-xs-7 col-md-9">
+        <div class="container-right">
+            <div class="outputs">
+            </div>
         </div>
     </div>
 </div>
