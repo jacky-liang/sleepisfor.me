@@ -8,6 +8,11 @@ $(document).ready(function(){
        lineColor: '#004471'
    }); 
    
+   var constants = {
+       "mins_in_day" : 24 * 60,
+       "mins_in_cycle" : 90
+   }
+   
    var t_us = $('#t_us'),
          t_ut = $('#t_ut'),
          t_rs = $('#t_rs'),
@@ -21,34 +26,56 @@ $(document).ready(function(){
    }
    
    times = {
-       "t_us" : timeToMSM(11, 0, "PM"),
-       "t_ut" : timeToMSM(7, 0, "AM"),
-       "t_rs" : timeToMSM(11, 0, "PM"),
-       "t_rt" : timeToMSM(7, 0, "AM")
+       "us" : timeToMSM(11, 0, "PM"),
+       "ut" : timeToMSM(7, 0, "AM"),
+       "rs" : timeToMSM(11, 0, "PM"),
+       "rt" : timeToMSM(7, 0, "AM")
    }
    
    t_us.timepicker({
        defaultTime: "11:00 PM"
    }).on('changeTime.timepicker', function(e) {
-       times.t_us = timeToMSM(e.time.hours, e.time.minutes, e.time.meridian);
+       times.us = timeToMSM(e.time.hours, e.time.minutes, e.time.meridian);
    });
    t_ut.timepicker({
        defaultTime: "7:00 AM"
    }).on('changeTime.timepicker', function(e) {
-       times.t_ut = timeToMSM(e.time.hours, e.time.minutes, e.time.meridian);
+       times.ut = timeToMSM(e.time.hours, e.time.minutes, e.time.meridian);
    });
    t_rs.timepicker({
        defaultTime: "11:00 PM"
    }).on('changeTime.timepicker', function(e) {
-       times.t_rs = timeToMSM(e.time.hours, e.time.minutes, e.time.meridian);
+       times.rs = timeToMSM(e.time.hours, e.time.minutes, e.time.meridian);
    });
    t_rt.timepicker({
        defaultTime: "7:00 AM"
    }).on('changeTime.timepicker', function(e) {
-       times.t_rt = timeToMSM(e.time.hours, e.time.minutes, e.time.meridian);
+       times.rt = timeToMSM(e.time.hours, e.time.minutes, e.time.meridian);
    });
+      
+   function getDuration(from, to) {
+       if (from > to)
+           return constants.mins_in_day - from + to
+       return to - from
+   }
+   
+   var durs = {
+       u: 0,
+       r: 0
+   }
+   
+   function updateState() {
+       durs.u = getDuration(times.us, times.ut);
+       durs.r = getDuration(times.rs, times.rt);
+   }
    
    $("#submit").click(function(){
-       console.log(times);
+       //convert input times to calculable values 
+       updateState();
+       
+       //plot stats
+       
+       
+       //display warnings
    });
 })
