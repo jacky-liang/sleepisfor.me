@@ -30,7 +30,7 @@ $(document).ready(function(){
    var bullets = [];
    
   var charts_data = {
-      "chart_sleep_duration" : {"ranges":[12],"measures":[8, 8],"markers":[8]},
+      "chart_sleep_duration" : {"ranges":[8.88],"measures":[8, 8],"markers":[8]},
       "chart_circadian_rhythm" : {"ranges":[100],"measures":[80, 0],"markers":[90]},
       "chart_nrem_sleep" : {"ranges":[426.667],"measures":[384, 384],"markers":[384]},
       "chart_rem_sleep" : {"ranges":[106.667],"measures":[96, 96],"markers":[96]}
