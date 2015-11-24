@@ -71,8 +71,26 @@ body {
 Bullet Graph Styling
 */
 
-#charts{
-    
+.chart-label{
+    text-align: right;
+    line-height: 1;
+}
+
+.chart-label .title {
+    font-size: medium;
+}
+
+.chart-label .subtitle {
+    font-size: smaller;
+    color: gray;
+}
+
+@media (max-width: 768px){
+    .chart-label {
+        text-align: left;
+        line-height: 1;
+        padding-left: 10px;
+    }
 }
 
 .bullet { font: 10px sans-serif; }
