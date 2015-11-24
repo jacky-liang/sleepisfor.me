@@ -109,16 +109,18 @@ $(document).ready(function(){
        charts_data.chart_circadian_rhythm.measures[1] = overlap;
        
        //Estimate NREM Sleep
-       var nrem_duration = stats.durs.r.mins * constants.nrem_percent;
-      charts_data.chart_nrem_sleep.measures[0] = nrem_duration;
-      charts_data.chart_nrem_sleep.measures[1] = nrem_duration;
-      charts_data.chart_nrem_sleep.ranges[0] = Math.max(nrem_duration, constants.bounds.nrem_duration);
+       var nrem_duration_u = stats.durs.u.mins * constants.nrem_percent,
+             nrem_duration_r = stats.durs.r.mins * constants.nrem_percent;
+      charts_data.chart_nrem_sleep.measures[0] = nrem_duration_r;
+      charts_data.chart_nrem_sleep.measures[1] = nrem_duration_u;
+      charts_data.chart_nrem_sleep.ranges[0] = Math.max(nrem_duration_r, nrem_duration_u, constants.bounds.nrem_duration);
       
       //Estimate REM Sleep
-      var rem_duration = stats.durs.r.mins * constants.rem_percent;
-      charts_data.chart_rem_sleep.measures[0] = rem_duration;
-      charts_data.chart_rem_sleep.measures[1] = rem_duration;
-      charts_data.chart_rem_sleep.ranges[0] = Math.max(rem_duration, constants.bounds.rem_duration);
+      var rem_duration_u = stats.durs.u.mins * constants.rem_percent,
+            rem_duration_r = stats.durs.r.mins * constants.rem_percent;
+      charts_data.chart_rem_sleep.measures[0] = rem_duration_r;
+      charts_data.chart_rem_sleep.measures[1] = rem_duration_u;
+      charts_data.chart_rem_sleep.ranges[0] = Math.max(rem_duration_r, rem_duration_u, constants.bounds.rem_duration);
 
    };
    
