@@ -30,22 +30,22 @@ var SO = {
        return to - from
     },
     updateStats : function(times) {
+        //Duration
         SO.stats.durs.u.mins = SO.getDuration(times.us, times.ut);
         SO.stats.durs.u.hrs = SO.stats.durs.u.mins / constants.mins_in_hr;
         SO.stats.durs.r.mins = SO.getDuration(times.rs, times.rt);
         SO.stats.durs.r.hrs = SO.stats.durs.r.mins / constants.mins_in_hr;       
 
+        //Overlap
         var ut = times.ut,
               rt = times.rt,
               us = times.us,
               rs = times.rs;
               
-        if (ut < us) ut += constants.mins_in_day;
-        if (rt < rs) rt += constants.mins_in_day;
+        if (ut < us) us -= constants.mins_in_day;
+        if (rt < rs) rs -= constants.mins_in_day;
         
         SO.stats.overlap.mins = Math.min(ut, rt) - Math.max(us, rs);
-        
-        console.log(ut, rt, us, rs);
 
         if (SO.stats.overlap.mins < 0) {
             SO.stats.overlap.mins = 0;
@@ -56,7 +56,9 @@ var SO = {
             SO.stats.overlap.tail.mins = rt - ut;                
         }
         
-        SO.stats.overlap.percent = SO.stats.overlap.mins / ( (SO.stats.durs.u.mins + SO.stats.durs.r.mins) / 2 );
+        console.log(SO.stats.overlap.head.mins, SO.stats.overlap.tail.mins);
+        
+        SO.stats.overlap.percent =  Math.abs((Math.abs(SO.stats.overlap.head.mins) + Math.abs(SO.stats.overlap.tail.mins)) / Math.max(SO.stats.durs.u.mins, constants.mins_in_eight_hrs) - 1);
         
         SO.stats.overlap.hrs = SO.stats.overlap.mins / constants.mins_in_hr;
         SO.stats.overlap.head.hrs = SO.stats.overlap.head.mins / constants.mins_in_hr;
