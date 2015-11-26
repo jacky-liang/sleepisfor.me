@@ -93,7 +93,7 @@ $(document).ready(function(){
             bullets.push({
                 "chart" : chart,
                 "svg" : svg
-            })
+            });
        });
    };
       
@@ -109,18 +109,14 @@ $(document).ready(function(){
        charts_data.chart_circadian_rhythm.measures[1] = overlap;
        
        //Estimate NREM Sleep
-       var nrem_duration_u = stats.durs.u.mins * constants.nrem_percent,
-             nrem_duration_r = stats.durs.r.mins * constants.nrem_percent;
-      charts_data.chart_nrem_sleep.measures[0] = nrem_duration_r;
-      charts_data.chart_nrem_sleep.measures[1] = nrem_duration_u;
-      charts_data.chart_nrem_sleep.ranges[0] = Math.max(nrem_duration_r, nrem_duration_u, constants.bounds.nrem_duration);
+      charts_data.chart_nrem_sleep.measures[0] = stats.durs.r.nrem;
+      charts_data.chart_nrem_sleep.measures[1] = stats.durs.u.nrem;
+      charts_data.chart_nrem_sleep.ranges[0] = Math.max(stats.durs.r.nrem, stats.durs.u.nrem, constants.bounds.nrem_duration);
       
       //Estimate REM Sleep
-      var rem_duration_u = stats.durs.u.mins * constants.rem_percent,
-            rem_duration_r = stats.durs.r.mins * constants.rem_percent;
-      charts_data.chart_rem_sleep.measures[0] = rem_duration_r;
-      charts_data.chart_rem_sleep.measures[1] = rem_duration_u;
-      charts_data.chart_rem_sleep.ranges[0] = Math.max(rem_duration_r, rem_duration_u, constants.bounds.rem_duration);
+      charts_data.chart_rem_sleep.measures[0] = stats.durs.r.rem;
+      charts_data.chart_rem_sleep.measures[1] = stats.durs.u.rem;
+      charts_data.chart_rem_sleep.ranges[0] = Math.max(stats.durs.r.rem, stats.durs.u.rem, constants.bounds.rem_duration);
 
    };
    
@@ -145,8 +141,15 @@ $(document).ready(function(){
             bullet.svg.call(bullet.chart.duration(1000));     
        });
 
-       
        //display warnings
+       conds.forEach(function(cond) {
+           if (cond.sat(SO.stats) || constants.DEBUG) {
+               var warning = document.createElement("div");
+               $(warning).attr("class", "warning").html(cond.text);
+               cond.target.append(warning);
+           }
+       });
+       
    });
    
   initCharts();

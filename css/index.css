@@ -67,6 +67,15 @@ body {
     padding: 20px;
 }
 
+.warnings {
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.warning {
+    margin-bottom: 5px;
+}
+
 /*
 Bullet Graph Styling
 */

@@ -3,11 +3,15 @@ var SO = {
         durs : {
            u : {
                hrs : 0,
-               mins : 0
+               mins : 0,
+               rem : 0, 
+               nrem : 0
            },
            r : {
                hrs : 0,
-               mins : 0
+               mins : 0,
+               rem : 0, 
+               nrem : 0
            }
         },
         overlap : {
@@ -36,6 +40,12 @@ var SO = {
         SO.stats.durs.r.mins = SO.getDuration(times.rs, times.rt);
         SO.stats.durs.r.hrs = SO.stats.durs.r.mins / constants.mins_in_hr;       
 
+        //REM and NREM
+        SO.stats.durs.u.rem = SO.stats.durs.u.mins * constants.rem_percent;
+        SO.stats.durs.r.rem = SO.stats.durs.r.mins * constants.rem_percent;
+        SO.stats.durs.u.nrem = SO.stats.durs.u.mins * constants.nrem_percent;
+        SO.stats.durs.r.nrem = SO.stats.durs.r.mins * constants.nrem_percent;
+        
         //Overlap
         var ut = times.ut,
               rt = times.rt,
@@ -55,8 +65,6 @@ var SO = {
             SO.stats.overlap.head.mins = rs - us;
             SO.stats.overlap.tail.mins = rt - ut;                
         }
-        
-        console.log(SO.stats.overlap.head.mins, SO.stats.overlap.tail.mins);
         
         SO.stats.overlap.percent =  Math.abs((Math.abs(SO.stats.overlap.head.mins) + Math.abs(SO.stats.overlap.tail.mins)) / Math.max(SO.stats.durs.u.mins, constants.mins_in_eight_hrs) - 1);
         
