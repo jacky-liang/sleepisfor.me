@@ -131,7 +131,12 @@ $(document).ready(function(){
    });
    
    $("#submit").click(function(){
+       if (!state.submitted_once) {
+            $("#instructions").hide();
+            $("#data").show();
+       }
        state.submitted_once = true;
+       
        //convert input times to calculable values 
         SO.updateStats(state.times);
               
@@ -141,6 +146,11 @@ $(document).ready(function(){
             bullet.svg.call(bullet.chart.duration(1000));     
        });
 
+       //clear warnings
+       $(".warnings").map(function() {
+            $(this).empty();
+        })
+       
        //display warnings
        conds.forEach(function(cond) {
            if (cond.sat(SO.stats) || constants.DEBUG) {
@@ -153,5 +163,5 @@ $(document).ready(function(){
    });
    
   initCharts();
-})
+});
 
