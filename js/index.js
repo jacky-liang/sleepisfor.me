@@ -72,13 +72,13 @@ $(document).ready(function(){
    });
 
    var width, height;
-   function updateChartDims() {
+   function updateChartDimsData() {
        width = chart_container_ref.width() - constants.margins.left - constants.margins.right;
        height = 50 - constants.margins.top - constants.margins.bottom;
    };
    
    function initCharts() {
-      updateChartDims();
+      updateChartDimsData();
        charts_containers.forEach(function(chart_container){
             var chart = d3.bullet();
             var svg = d3.select("#" + chart_container).selectAll("svg")
@@ -120,20 +120,24 @@ $(document).ready(function(){
 
    };
    
-   d3.select(window).on('resize', function(){
-       updateChartDims();
+   function updateChartDims(){
+       updateChartDimsData();
        d3.selectAll("svg").attr("width", width + constants.margins.left + constants.margins.right);
        bullets.forEach(function(bullet){
             bullet.chart.width(width).height(height);
             if (state.submitted_once)
                 bullet.svg.call(bullet.chart);        
        });
-   });
+   };
+   
+   d3.select(window).on('resize', updateChartDims);
    
    $("#submit").click(function(){
        if (!state.submitted_once) {
             $("#instructions").hide();
             $("#data").show();
+            updateChartDimsData();
+            updateChartDims();
        }
        state.submitted_once = true;
        
@@ -158,6 +162,11 @@ $(document).ready(function(){
                $(warning).attr("class", "warning").html(cond.text);
                cond.target.append(warning);
            }
+       });
+       
+       //Recommend sleep time:
+       labels.forEach(function(label){
+          label.target.html(label.model(SO.stats));
        });
        
    });

@@ -1,5 +1,6 @@
 var SO = {
     stats : {
+        times : null,
         durs : {
            u : {
                hrs : 0,
@@ -34,6 +35,8 @@ var SO = {
        return to - from
     },
     updateStats : function(times) {
+        SO.stats.times = times;
+        
         //Duration
         SO.stats.durs.u.mins = SO.getDuration(times.us, times.ut);
         SO.stats.durs.u.hrs = SO.stats.durs.u.mins / constants.mins_in_hr;

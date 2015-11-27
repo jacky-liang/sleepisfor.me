@@ -51,7 +51,7 @@ $(document).ready(function(){
         },
         {
             target : sleep_durs,
-            text : "You have not slept for more than 4 hours! You know have about a 70% reduction in natural T killer cells and 50% in antibody buildup.",
+            text : "You have not slept for more than 4 hours! You now have about a 70% reduction in natural T killer cells and 50% in antibody buildup.",
             sat : function (stats) {
                 return stats.durs.r.mins <= 4 * 60 || stats.durs.u.mins <= 4 * 60;
             }

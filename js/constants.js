@@ -3,6 +3,7 @@
        mins_in_day : 24 * 60,
        mins_in_cycle : 90,
        mins_in_eight_hrs : 8 * 60,
+       mins_sleep_delay : 16 * 60,
        margins : {
             top: 5, 
             right: 10, 

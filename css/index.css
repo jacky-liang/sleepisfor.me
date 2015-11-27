@@ -10,6 +10,11 @@ body {
     font-size: large;
 }
 
+.container-title .subtitle {
+    color: gray;
+    font-size: small;
+}
+
 #particle-bg {
     top: 0;
     left: 0;
@@ -66,8 +71,19 @@ body {
     padding: 20px;
 }
 
+.outputs.mock {
+    height: 0;
+    padding: 0 20px 0 20px;
+}
+
 #data {
     display: none;
+}
+
+.data-label {
+    line-height: 1.4;
+    font-size: small;
+    margin-top: 4px;
 }
 
 .warnings {
