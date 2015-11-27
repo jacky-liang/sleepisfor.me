@@ -47,6 +47,7 @@ $(document).ready(function(){
                 
                 var hr = Math.floor(wake_time / constants.mins_in_hr);
                 if (hr > 12) hr -= 12;
+                if (hr == 0) hr = 12;
                 
                 var mins = wake_time % constants.mins_in_hr;
                 if (mins < 10) mins = "0" + mins;
