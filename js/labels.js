@@ -38,7 +38,7 @@ $(document).ready(function(){
         {
             target : data_sleep_time,
             model : function (stats) {
-                var wake_time = (stats.times.rt + constants.mins_sleep_delay) % constants.mins_in_day;
+                var wake_time = (stats.times.ut + constants.mins_sleep_delay) % constants.mins_in_day;
                                 
                 var mer = "AM";
                 if (wake_time >= constants.mins_in_day / 2) {
